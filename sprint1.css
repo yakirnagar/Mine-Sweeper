@@ -15,12 +15,14 @@ body {
     margin: auto;
 }
 .cell {
-    background-color: lightpink;
+    height: 20px;
+    width: 20px;
+    background-color: rgb(159, 151, 152);
 }
 
-.hidden {
-    /* visibility: hidden; */
-    /* background-color: gray; */
+.selected {
+   
+    background-color:blanchedalmond
 }
 
 .gameBoard td {
