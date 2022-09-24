@@ -5,7 +5,7 @@ body {
 }
 
 .gameContainer {
-    margin-top: 50px;
+    margin-top: 40px;
     
 }
 .gameBoard {
@@ -14,15 +14,39 @@ body {
     width: 300px;
     margin: auto;
 }
-.cell {
+/* .timer {
+    border: 3px;
+    margin-top: 40px;
+    font-size: larger;
+
+} */
+
+.restart:hover {
+cursor: pointer;
+}
+
+.gameOver {
     height: 20px;
-    width: 20px;
+    width: 200px;
+    background-color: red; 
+    padding: 10px;
+    font-weight: bolder;
+    margin: auto;
+    display: none;
+    
+}
+.cell {
+    
     background-color: rgb(159, 151, 152);
 }
 
 .selected {
    
     background-color:blanchedalmond
+}
+
+.mine {
+    background-color: orange;
 }
 
 .gameBoard td {
