@@ -2,6 +2,7 @@
 const EMPTY = ''
 const FLAG = '🚩'
 const SAD = '🤕'
+const HAPPY = '😊'
 const MINE = '💣'
 const lives = '💗'
 
@@ -12,7 +13,7 @@ var gGame = {
     secsPassed: 0,
     numOfLives: 3
 }
-var gTimerInterval 
+var gTimerInterval
 var gBoard
 var gIsFirstClick = true
 var gLevel = {
@@ -21,14 +22,18 @@ var gLevel = {
 }
 
 function initGame() {
-    // easyBtnClicked()
-    // mediumBtnClicked()
-    // hardBtnClicked()
+    // switch (gLevel) {
+    //     case mediumBtnClicked(): { gLevel.size = 8, gLevel.mines = 14 }
+    //         break
+    //     case hardBtnClicked(): { gLevel.size = 12, gLevel.mines = 32 }
+    //         break
+    //     default: gLevel
+    //     break
+    // }
     gBoard = createMat(gLevel.size)
     createMines(gLevel.mines)
-    
     renderBoard(gBoard)
-
+    resetGame()
 }
 
 function easyBtnClicked() {
@@ -36,7 +41,7 @@ function easyBtnClicked() {
     return gLevel = { size: 4, mines: 2 }
 }
 function mediumBtnClicked() {
-    console.log('hey')
+    console.log('bey')
     return gLevel = { size: 8, mines: 14 }
 }
 function hardBtnClicked() {
@@ -86,10 +91,11 @@ function renderBoard(board) {
 }
 
 function getClassName(numOfRow, numOfCol) {
-    var cellClass = 'cell-' + numOfRow + '-' + numOfCol // + ' hidden'
+    var cellClass = 'cell-' + numOfRow + '-' + numOfCol
     return cellClass
 }
 
+// randomly puts mines in cells on the board
 function createMines(numOfMines) {
     var randomRow
     var randomCol
@@ -117,7 +123,7 @@ function setMinesNegsCount(cellI, cellJ) {
     // console.log(mineNegCount);
     return mineNegCount
 }
-
+// first click - the game starts, revealing the number of cells around the selected cell 
 function cellClicked(elCell, cellI, cellJ) {
     if (gIsFirstClick) {//settime
         gGame.isOn = true
@@ -145,23 +151,42 @@ function cellClicked(elCell, cellI, cellJ) {
 
     if (gGame.numOfLives === 0) {
         gameOver()
-       
     }
 }
+
 // function setTimer() {
 //     var timer = document.querySelector('.timer')
 //     var start = Date.now()
 //     console.log(start);
 // }
 
+// supposed to add a flag on each cell the user selects
+function addMarkFlag(elCell) {
+    document.addEventListener('onmousedown', (event) => {
+        if (event.button === 2) elCell.innerText = FLAG
+    })
+}
+    
+
 function gameOver() {
     gGame.isOn = false
-    console.log('game over');
+    // console.log('game over');
     var elSpan = document.querySelector('span')
-    console.log(elSpan)
+    // console.log(elSpan)
     elSpan.innerText = SAD
     var eldiv = document.querySelector('.gameOver')
     eldiv.style.display = 'block'
+}
+
+function resetGame() {
+    var restart = document.querySelector('.restart')
+    restart.innerText = HAPPY
+
+    var eldiv = document.querySelector('.gameOver')
+    eldiv.style.display = 'none'
+
+    var elSpan = document.querySelector('.lives')
+    elSpan.innerText = gGame.numOfLives = 3
 }
 
 function getRandomIntInclusive(min, max) {
