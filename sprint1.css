@@ -1,0 +1,57 @@
+body {
+    background-color: aquamarine; 
+    text-align: center;
+    
+}
+
+.gameContainer {
+    margin-top: 40px;
+    
+}
+.gameBoard {
+    
+    height: 300px;
+    width: 300px;
+    margin: auto;
+}
+/* .timer {
+    border: 3px;
+    margin-top: 40px;
+    font-size: larger;
+
+} */
+
+.restart:hover {
+cursor: pointer;
+}
+
+.gameOver {
+    height: 20px;
+    width: 200px;
+    background-color: red; 
+    padding: 10px;
+    font-weight: bolder;
+    margin: auto;
+    display: none;
+    
+}
+.cell {
+    
+    background-color: rgb(159, 151, 152);
+}
+
+.selected {
+   
+    background-color:blanchedalmond
+}
+
+.mine {
+    background-color: orange;
+}
+
+.gameBoard td {
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    font-size: 2.4em;
+}
